@@ -1,0 +1,22 @@
+{% block head %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet" href="" />
+            <title>{% block title %}  Awesome webapp by Commercetools {% endblock %}</title>
+        </head>
+{% endblock %}
+
+{% block body %}
+    <body>
+        {% block container %}
+            <div class="container">
+
+            </div>
+            {% block form %}
+            {% endblock %}
+        {% endblock %}
+    </body>
+{% endblock %}
+
+
