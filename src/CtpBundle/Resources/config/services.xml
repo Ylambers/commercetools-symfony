@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="commercetools" synthetic="true" />
+        <service id="commercetools.client" class="Commercetools\Symfony\CtpBundle\Service\ClientFactory">
+            <argument>%commercetools.client_id%</argument>
+            <argument>%commercetools.client_secret%</argument>
+            <argument>%commercetools.project%</argument>
+            <argument>%commercetools.fallback_languages%</argument>
+            <argument type="service" id="commercetools.cache" />
+            <argument type="service" id="commercetools.locale.converter" />
+            <argument type="service" id="logger" on-invalid="null" />
+        </service>
+        <service id="commercetools.cache" class="Commercetools\Core\Cache\CacheAdapterInterface">
+            <factory service="commercetools.cache.factory" method="get" />
+        </service>
+        <service id="commercetools.cache.factory" class="Commercetools\Core\Cache\CacheAdapterFactory" />
+        <service id="commercetools.locale.converter" class="Commercetools\Symfony\CtpBundle\Service\LocaleConverter">
+            <argument>DE</argument>
+        </service>
+        <service id="commercetools.repository.product" class="Commercetools\Symfony\CtpBundle\Model\Repository\ProductRepository">
+            <argument>%commercetools.cache.product%</argument>
+            <argument type="service" id="commercetools.cache" />
+            <argument type="service" id="commercetools.client"/>
+        </service>
+    </services>
+</container>

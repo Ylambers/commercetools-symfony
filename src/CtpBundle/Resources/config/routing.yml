@@ -1,0 +1,12 @@
+_ctp_example:
+    path:     /example/product
+    defaults: { _controller: CtpBundle:Catalog:index }
+
+_ctp_example_product:
+    path:    /example/product/{slug}
+    defaults: { _controller: CtpBundle:Catalog:detail }
+
+_ctp_example_login:
+    path:    /example/login
+    defaults: { _controller: CtpBundle:User:login }
+
