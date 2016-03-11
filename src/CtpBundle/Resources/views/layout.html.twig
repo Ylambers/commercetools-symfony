@@ -7,15 +7,20 @@
         </head>
 {% endblock %}
 
+{% block menu %}
+    <ul>
+        <li><a href="product">Home</a> </li>
+        <li><a href="user">login</a> </li>
+        <li><a href="logout">logout</a> </li>
+    </ul>
+{% endblock %}
+
 {% block body %}
     <body>
+        <div class="container">
         {% block container %}
-            <div class="container">
-
-            </div>
-            {% block form %}
-            {% endblock %}
         {% endblock %}
+        </div>
     </body>
 {% endblock %}
 

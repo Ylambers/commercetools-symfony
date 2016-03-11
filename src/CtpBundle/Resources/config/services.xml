@@ -3,6 +3,10 @@
 <container xmlns="http://symfony.com/schema/dic/services"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="commercetools.cache.customer" type="string">false</parameter>
+        <parameter key="commercetools.cache.product" type="string">false</parameter>
+    </parameters>
     <services>
         <service id="commercetools" synthetic="true" />
         <service id="commercetools.client" class="Commercetools\Symfony\CtpBundle\Service\ClientFactory">
@@ -25,6 +29,27 @@
             <argument>%commercetools.cache.product%</argument>
             <argument type="service" id="commercetools.cache" />
             <argument type="service" id="commercetools.client"/>
+        </service>
+        <service id="commercetools.repository.customer" class="Commercetools\Symfony\CtpBundle\Model\Repository\CustomerRepository">
+            <argument>%commercetools.cache.customer%</argument>
+            <argument type="service" id="commercetools.cache" />
+            <argument type="service" id="commercetools.client"/>
+        </service>
+        <service id="commercetools.user_provider"
+                 class="Commercetools\Symfony\CtpBundle\Security\User\UserProvider">
+            <argument type="service" id="session" />
+        </service>
+        <service id="security.authentication_provider.commercetools"
+                 class="Commercetools\Symfony\CtpBundle\Security\Authentication\Provider\AuthenticationProvider"
+                 abstract="true"
+                 public="false"
+        >
+            <argument type="service" id="session" />
+            <argument type="service" id="commercetools.client" />
+            <argument /> <!-- User Provider -->
+            <argument type="service" id="security.user_checker" />
+            <argument /> <!-- Provider-shared Key -->
+            <argument>%security.authentication.hide_user_not_found%</argument>
         </service>
     </services>
 </container>

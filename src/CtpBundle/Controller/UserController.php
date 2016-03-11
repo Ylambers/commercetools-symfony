@@ -5,16 +5,23 @@
 
 namespace Commercetools\Symfony\CtpBundle\Controller;
 
+use Commercetools\Symfony\CtpBundle\Security\User\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 
 class UserController extends Controller
 {
     public function indexAction()
     {
-        return new Response('Test');
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+
+        return $this->render('CtpBundle:user:admin.html.twig', array(
+            'user' => $user
+        ));
     }
 
     public function loginAction(Request $request)

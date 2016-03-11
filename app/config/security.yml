@@ -1,17 +1,20 @@
 # app/config/security.yml
 security:
     providers:
-        in_memory:
-            memory:
-               users:
-                  yaron:
-                     password: yaron
-                     roles: ROLE_USER
-                  admin:
-                     password: admin
-                     roles: ROLE_ADMIN
+        commercetools:
+           id: commercetools.user_provider
+#        in_memory:
+#            memory:
+#               users:
+#                  yaron:
+#                     password: yaron
+#                     roles: ROLE_USER
+#                  admin:
+#                     password: admin
+#                     roles: ROLE_ADMIN
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+#        Symfony\Component\Security\Core\User\User: plaintext
+        Commercetools\Symfony\CtpBundle\Security\User\User: plaintext
 
     firewalls:
         dev:
@@ -21,7 +24,7 @@ security:
         main:
             pattern: example
             anonymous: ~
-            form_login:
+            commercetools_login:
               login_path: login
               check_path: login_check
             logout:
