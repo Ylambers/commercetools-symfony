@@ -19,7 +19,7 @@ class UserController extends Controller
          */
         $user = $this->getUser();
 
-        return $this->render('CtpBundle:user:admin.html.twig', array(
+        return $this->render('CtpBundle:catalog:index.html.twig', array(
             'user' => $user
         ));
     }

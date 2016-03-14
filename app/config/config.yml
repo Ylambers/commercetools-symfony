@@ -68,9 +68,13 @@ swiftmailer:
     spool:     { type: memory }
 
 commercetools:
+  credentials:
     client_id: D2dkRK8St-jEUMYQzeU8ZdLX
     client_secret: BF7Xyrd75rtwNZImnjFlz-e8fibz3xOn
     project: yarontest-29
-    cache:
-        product: true
+  cache:
+    product: true
+  currency:
+    DE: EUR
+    UK: GBP
 

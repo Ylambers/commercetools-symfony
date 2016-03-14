@@ -35,6 +35,17 @@
             <argument type="service" id="commercetools.cache" />
             <argument type="service" id="commercetools.client"/>
         </service>
+        <service id="commercetools.repository.cart" class="Commercetools\Symfony\CtpBundle\Model\Repository\CartRepository">
+            <argument>%commercetools.cache.customer%</argument>
+            <argument type="service" id="commercetools.cache" />
+            <argument type="service" id="commercetools.client"/>
+            <argument type="service" id="commercetools.repository.shipping_method"/>
+        </service>
+        <service id="commercetools.repository.shipping_method" class="Commercetools\Symfony\CtpBundle\Model\Repository\ShippingMethodRepository">
+            <argument>%commercetools.cache.customer%</argument>
+            <argument type="service" id="commercetools.cache" />
+            <argument type="service" id="commercetools.client"/>
+        </service>
         <service id="commercetools.user_provider"
                  class="Commercetools\Symfony\CtpBundle\Security\User\UserProvider">
             <argument type="service" id="session" />

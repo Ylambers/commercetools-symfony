@@ -29,5 +29,8 @@ class CommercetoolsExtension extends Extension
         foreach ($config['cache'] as $key => $value) {
             $container->setParameter('commercetools.cache.' . $key, $value);
         }
+        foreach ($config['currency'] as $key => $value) {
+            $container->setParameter('commercetools.currency.' . $key, $value);
+        }
     }
 }

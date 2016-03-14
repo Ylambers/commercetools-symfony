@@ -18,16 +18,19 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-//                ->arrayNode('commercetools')
-//                    ->children()
+                ->arrayNode('credentials')
+                    ->children()
                         ->scalarNode('client_id')->end()
                         ->scalarNode('client_secret')->end()
                         ->scalarNode('project')->end()
-                        ->arrayNode('cache')
-                            ->prototype('boolean')->end()
-                        ->end()
-//                    ->end()
-//                ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('cache')
+                    ->prototype('boolean')->end()
+                ->end()
+                ->arrayNode('currency')
+                    ->prototype('scalar')->end()
+                ->end()
             ->end()
         ;
 

@@ -18,5 +18,7 @@ _ctp_example_user:
     path:    /example/user
     defaults: { _controller: CtpBundle:User:index }
 
-
+_ctp_example_cart:
+    path: /example/cart
+    defaults: { _controller: CtpBundle:Cart:index}
 

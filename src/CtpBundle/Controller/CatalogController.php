@@ -48,6 +48,14 @@ class CatalogController extends Controller
 
         $product = $repository->getProductBySlug($slug, $request->getLocale());
 
+        $variantIds = [];
+
+        foreach ($product->getAllVariants() as $variant) {
+            $variantIds[] = [
+                'id' => $variant->getId(),
+                'sku' => $variant->getSku()
+            ];
+        }
         return $this->render('CtpBundle:catalog:product.html.twig', array(
             'product' =>  $product
         ));
