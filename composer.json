@@ -29,7 +29,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "commercetools/symfony-bundle": "@dev",
         "commercetools/commons": "*",
-        "commercetools/php-sdk": "dev-develop"
+        "commercetools/php-sdk": "dev-develop",
+        "symfony/assetic-bundle": "^2.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

@@ -78,3 +78,8 @@ commercetools:
     DE: EUR
     UK: GBP
 
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~

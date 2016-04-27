@@ -14,6 +14,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return new Response('Homepage, DefaultController');
+        return $this->render('CtpBundle::index.html.twig');
     }
 }
